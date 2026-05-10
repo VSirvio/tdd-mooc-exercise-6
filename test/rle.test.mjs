@@ -70,6 +70,14 @@ describe('getCellData()', () => {
     `);
     expect(getCellData(rle)).toEqual(['boo']);
   });
+
+  test('can read cell data for glider', () => {
+    const rle = rleFromString(`
+      x = 3, y = 3, rule = B3/S23
+      bo$2bo$3o!
+    `);
+    expect(getCellData(rle)).toEqual(['bo', 'bbo', 'ooo']);
+  });
 });
 
 describe('patternFromRle()', () => {
