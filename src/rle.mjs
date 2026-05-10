@@ -42,7 +42,13 @@ export const patternFromRle = rle => {
 };
 
 export const rleFromPattern = pattern => {
-  const firstLine = `x = ${pattern[0].length}, y = ${pattern.length}, rule = B3/S23\n`;
-  const data = `${pattern.map(row => row.join('').replace(/b+$/, '')).join('$')}!`;
-  return firstLine + data;
+  const width = pattern[0].length;
+  const height = pattern.length;
+
+  const firstLine = `x = ${width}, y = ${height}, rule = B3/S23\n`;
+
+  const rows = pattern.map(row => row.join('').replace(/b+$/, ''));
+  const rleCodedCellData = `${rows.join('$')}!`;
+
+  return firstLine + rleCodedCellData;
 };
