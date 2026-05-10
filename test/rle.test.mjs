@@ -54,6 +54,14 @@ describe('getCellData()', () => {
     `);
     expect(getCellData(rle)).toEqual(['o']);
   });
+
+  test('can read cell data for "2o!"', () => {
+    const rle = rleFromString(`
+      x = 3, y = 1, rule = B3/S23
+      2o!
+    `);
+    expect(getCellData(rle)).toEqual(['oo']);
+  });
 });
 
 describe('patternFromRle()', () => {

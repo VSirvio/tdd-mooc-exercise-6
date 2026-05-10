@@ -10,7 +10,12 @@ export const getMetadata = rle => {
 
 export const getCellData = rle => {
   const cellData = rle.split("\n").slice(1).join().slice(0, -1);
-  return [cellData];
+  const match = cellData.match(/^(\d*)(b|o)/);
+  let count = 1;
+  if (match[1]) {
+    count = parseInt(match[1]);
+  }
+  return [match[2].repeat(count)];
 };
 
 export const patternFromRle = rle => {
