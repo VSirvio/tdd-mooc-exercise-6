@@ -28,9 +28,18 @@ export const getCellData = rle => {
 };
 
 export const encodeRepetition = str => {
-  const character = str[0];
-  let count = str.length;
-  let result = `${count > 1 ? count : ''}${character}`
+  let remainingStr = str;
+  let result = '';
+  while (remainingStr) {
+    const character = remainingStr[0];
+    remainingStr = remainingStr.slice(1);
+    let count = 1;
+    while (remainingStr[0] === character) {
+      remainingStr = remainingStr.slice(1);
+      count++;
+    }
+    result += `${count > 1 ? count : ''}${character}`;
+  }
   return result;
 };
 

@@ -94,6 +94,10 @@ describe('encodeRepetition()', () => {
   test('can encode repetition in "bb"', () => {
     expect(encodeRepetition('bb')).toBe('2b');
   });
+
+  test('can encode repetition in "bboo"', () => {
+    expect(encodeRepetition('bboo')).toBe('2b2o');
+  });
 });
 
 describe('patternFromRle()', () => {
