@@ -34,6 +34,15 @@ describe('getMetadata()', () => {
     const metadata = getMetadata(rle);
     expect(metadata.x).toBe(1);
   });
+
+  test('returns the y dimension of the pattern', () => {
+    const rle = rleFromString(`
+      x = 1, y = 1, rule = B3/S23
+      !
+    `);
+    const metadata = getMetadata(rle);
+    expect(metadata.y).toBe(1);
+  });
 });
 
 describe('patternFromRle()', () => {
