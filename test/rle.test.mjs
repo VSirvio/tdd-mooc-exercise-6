@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
+  getMetadata,
   patternFromRle,
   patternFromString,
   rleFromString,
@@ -21,6 +22,17 @@ describe('patternFromString()', () => {
       b
     `;
     expect(patternFromString(patternString)).toEqual([['b']]);
+  });
+});
+
+describe('getMetadata()', () => {
+  test('returns the x dimension of the pattern', () => {
+    const rle = rleFromString(`
+      x = 1, y = 1, rule = B3/S23
+      !
+    `);
+    const metadata = getMetadata(rle);
+    expect(metadata.x).toBe(1);
   });
 });
 
