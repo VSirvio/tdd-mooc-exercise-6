@@ -157,4 +157,14 @@ describe('rleFromPattern()', () => {
       bo$bo!
     `));
   });
+
+  test('can encode 2x1 "o!" pattern with RLE', () => {
+    const pattern = patternFromString(`
+      ob
+    `);
+    expect(rleFromPattern(pattern)).toBe(rleFromString(`
+      x = 2, y = 1, rule = B3/S23
+      o!
+    `));
+  });
 });

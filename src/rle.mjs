@@ -43,6 +43,6 @@ export const patternFromRle = rle => {
 
 export const rleFromPattern = pattern => {
   const firstLine = `x = ${pattern[0].length}, y = ${pattern.length}, rule = B3/S23\n`;
-  const data = `${pattern.map(row => row.join('')).join('$')}!`;
+  const data = `${pattern.map(row => row.join('').replace(/b+$/, '')).join('$')}!`;
   return firstLine + data;
 };
