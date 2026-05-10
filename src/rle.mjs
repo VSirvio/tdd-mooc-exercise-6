@@ -42,5 +42,5 @@ export const patternFromRle = rle => {
 };
 
 export const rleFromPattern = pattern => {
-  return "x = 1, y = 1, rule = B3/S23\no!";
+  return `x = ${pattern[0].length}, y = 1, rule = B3/S23\n${pattern[0].join('')}!`;
 };
