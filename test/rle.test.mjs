@@ -1,5 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { patternFromString, rleFromString } from '../src/rle.mjs';
+import {
+  patternFromRle,
+  patternFromString,
+  rleFromString,
+} from '../src/rle.mjs';
 
 describe('rleFromString()', () => {
   test('can read 1x1 all dead pattern from string', () => {
@@ -17,5 +21,17 @@ describe('patternFromString()', () => {
       b
     `;
     expect(patternFromString(patternString)).toEqual([['b']]);
+  });
+});
+
+describe('patternFromRle()', () => {
+  test('can read 1x1 all dead pattern from RLE format', () => {
+    const rle = rleFromString(`
+      x = 1, y = 1, rule = B3/S23
+      !
+    `);
+    expect(patternFromRle(rle)).toEqual(patternFromString(`
+      b
+    `));
   });
 });
