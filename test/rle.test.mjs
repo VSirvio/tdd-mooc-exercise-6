@@ -111,4 +111,16 @@ describe('patternFromRle()', () => {
       bbb
     `));
   });
+
+  test('can read glider pattern from RLE format', () => {
+    const rle = rleFromString(`
+      x = 3, y = 3, rule = B3/S23
+      bo$2bo$3o!
+    `);
+    expect(patternFromRle(rle)).toEqual(patternFromString(`
+      bob
+      bbo
+      ooo
+    `));
+  });
 });

@@ -29,7 +29,14 @@ export const getCellData = rle => {
 
 export const patternFromRle = rle => {
   const metadata = getMetadata(rle);
-  return Array(metadata.y).fill(null).map(() =>
+  const cellData = getCellData(rle);
+  const result = Array(metadata.y).fill(null).map(() =>
     Array.from('b'.repeat(metadata.x))
   );
+  for (let y = 0; y < cellData.length; y++) {
+    for (let x = 0; x < cellData[y].length; x++) {
+      result[y][x] = cellData[y][x];
+    }
+  }
+  return result;
 };
