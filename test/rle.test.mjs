@@ -90,6 +90,10 @@ describe('encodeRepetition()', () => {
   test('can encode repetition in "oo"', () => {
     expect(encodeRepetition('oo')).toBe('2o');
   });
+
+  test('can encode repetition in "bb"', () => {
+    expect(encodeRepetition('bb')).toBe('2b');
+  });
 });
 
 describe('patternFromRle()', () => {
