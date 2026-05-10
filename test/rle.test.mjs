@@ -65,4 +65,15 @@ describe('patternFromRle()', () => {
       bb
     `));
   });
+
+  test('can read 3x2 all dead pattern from RLE format', () => {
+    const rle = rleFromString(`
+      x = 3, y = 2, rule = B3/S23
+      !
+    `);
+    expect(patternFromRle(rle)).toEqual(patternFromString(`
+      bbb
+      bbb
+    `));
+  });
 });
