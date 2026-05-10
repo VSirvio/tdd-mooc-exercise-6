@@ -64,7 +64,7 @@ export const rleFromPattern = pattern => {
   const firstLine = `x = ${width}, y = ${height}, rule = B3/S23\n`;
 
   const rows = pattern.map(row => row.join('').replace(/b+$/, ''));
-  const rleCodedCellData = `${rows.join('$').replace(/\$+$/, '')}!`;
+  const rleCodedCellData = encodeRepetition(`${rows.join('$').replace(/\$+$/, '')}!`);
 
   return firstLine + rleCodedCellData;
 };

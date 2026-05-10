@@ -197,4 +197,16 @@ describe('rleFromPattern()', () => {
       o!
     `));
   });
+
+  test('can encode glider pattern with RLE', () => {
+    const pattern = patternFromString(`
+      bob
+      bbo
+      ooo
+    `);
+    expect(rleFromPattern(pattern)).toBe(rleFromString(`
+      x = 3, y = 3, rule = B3/S23
+      bo$2bo$3o!
+    `));
+  });
 });
