@@ -10,12 +10,18 @@ export const getMetadata = rle => {
 
 export const getCellData = rle => {
   const cellData = rle.split("\n").slice(1).join().slice(0, -1);
-  const match = cellData.match(/^(\d*)(b|o)/);
-  let count = 1;
-  if (match[1]) {
-    count = parseInt(match[1]);
+  let remainingRow = cellData;
+  let result = '';
+  while (remainingRow) {
+    const match = remainingRow.match(/^(\d*)(b|o)/);
+    let count = 1;
+    if (match[1]) {
+      count = parseInt(match[1]);
+    }
+    result += match[2].repeat(count);
+    remainingRow = remainingRow.slice(match[0].length);
   }
-  return [match[2].repeat(count)];
+  return [result];
 };
 
 export const patternFromRle = rle => {
