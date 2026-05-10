@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
+  getCellData,
   getMetadata,
   patternFromRle,
   patternFromString,
@@ -42,6 +43,16 @@ describe('getMetadata()', () => {
     `);
     const metadata = getMetadata(rle);
     expect(metadata.y).toBe(1);
+  });
+});
+
+describe('getCellData()', () => {
+  test('can read cell data for "o!"', () => {
+    const rle = rleFromString(`
+      x = 3, y = 1, rule = B3/S23
+      o!
+    `);
+    expect(getCellData(rle)).toEqual(['o']);
   });
 });
 

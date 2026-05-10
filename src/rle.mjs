@@ -8,6 +8,11 @@ export const getMetadata = rle => {
   return { x: parseInt(metadata[1]), y: parseInt(metadata[2]) };
 };
 
+export const getCellData = rle => {
+  const cellData = rle.split("\n").slice(1).join().slice(0, -1);
+  return [cellData];
+};
+
 export const patternFromRle = rle => {
   const metadata = getMetadata(rle);
   return Array(metadata.y).fill(null).map(() =>
