@@ -28,7 +28,7 @@ export const getCellData = rle => {
 };
 
 export const encodeRepetition = str => {
-  return 'o';
+  return `${str.length > 1 ? str.length : ''}o`;
 };
 
 export const patternFromRle = rle => {
