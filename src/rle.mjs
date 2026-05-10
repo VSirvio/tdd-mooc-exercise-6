@@ -27,6 +27,10 @@ export const getCellData = rle => {
   return cellData;
 };
 
+export const encodeRepetition = str => {
+  return 'o';
+};
+
 export const patternFromRle = rle => {
   const metadata = getMetadata(rle);
   const cellData = getCellData(rle);

@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
+  encodeRepetition,
   getCellData,
   getMetadata,
   patternFromRle,
@@ -78,6 +79,12 @@ describe('getCellData()', () => {
       bo$2bo$3o!
     `);
     expect(getCellData(rle)).toEqual(['bo', 'bbo', 'ooo']);
+  });
+});
+
+describe('encodeRepetition()', () => {
+  test('can encode repetition in "o"', () => {
+    expect(encodeRepetition('o')).toBe('o');
   });
 });
 
