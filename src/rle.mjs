@@ -40,3 +40,7 @@ export const patternFromRle = rle => {
   }
   return result;
 };
+
+export const rleFromPattern = pattern => {
+  return "x = 1, y = 1, rule = B3/S23\no!";
+};

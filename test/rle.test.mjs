@@ -4,6 +4,7 @@ import {
   getMetadata,
   patternFromRle,
   patternFromString,
+  rleFromPattern,
   rleFromString,
 } from '../src/rle.mjs';
 
@@ -121,6 +122,18 @@ describe('patternFromRle()', () => {
       bob
       bbo
       ooo
+    `));
+  });
+});
+
+describe('rleFromPattern()', () => {
+  test('can encode 1x1 all alive pattern with RLE', () => {
+    const pattern = patternFromString(`
+      o
+    `);
+    expect(rleFromPattern(pattern)).toBe(rleFromString(`
+      x = 1, y = 1, rule = B3/S23
+      o!
     `));
   });
 });
