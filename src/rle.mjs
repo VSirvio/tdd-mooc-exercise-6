@@ -9,5 +9,6 @@ export const getMetadata = rle => {
 };
 
 export const patternFromRle = rle => {
-  return [['b']];
+  const metadata = getMetadata(rle);
+  return [Array.from('b'.repeat(metadata.x))];
 };
