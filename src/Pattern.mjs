@@ -6,7 +6,7 @@ class Pattern {
   }
 
   as2DArray() {
-    return this.#arr;
+    return this.#arr.map(row => Array.from(row));
   }
 }
 

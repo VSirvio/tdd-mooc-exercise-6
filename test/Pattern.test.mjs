@@ -21,4 +21,14 @@ describe('Pattern', () => {
     patternArray[0][0] = 'o';
     expect(pattern.as2DArray()).toEqual([['b']]);
   });
+
+  test('does not allow modifying itself by modifying the array returned by as2DArray()', () => {
+    const patternArray = patternFromString(`
+      b
+    `);
+    const pattern = new Pattern(patternArray);
+    const returnedArray = pattern.as2DArray();
+    returnedArray[0][0] = 'o';
+    expect(pattern.as2DArray()).toEqual([['b']]);
+  });
 });
