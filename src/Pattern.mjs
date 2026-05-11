@@ -31,7 +31,10 @@ class Pattern {
         const neighborsAliveCount = this.neighborsAliveCount(x, y);
 
         if (
-          (this.#arr[y][x] === 'o' && neighborsAliveCount > 1) ||
+          (
+            this.#arr[y][x] === 'o' &&
+            neighborsAliveCount > 1 && neighborsAliveCount < 4
+          ) ||
           (this.#arr[y][x] === 'b' && neighborsAliveCount === 3)
         ) {
           result[y][x] = 'o';

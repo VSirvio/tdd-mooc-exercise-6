@@ -131,4 +131,17 @@ describe('Pattern', () => {
     expect(initialPattern.nextGeneration().as2DArray())
       .toEqual(expectedResult.as2DArray());
   });
+
+  test('can simulate the next generation for 3x2 all alive pattern', () => {
+    const initialPattern = new Pattern(patternFromString(`
+      ooo
+      ooo
+    `));
+    const expectedResult = new Pattern(patternFromString(`
+      obo
+      obo
+    `));
+    expect(initialPattern.nextGeneration().as2DArray())
+      .toEqual(expectedResult.as2DArray());
+  });
 });
