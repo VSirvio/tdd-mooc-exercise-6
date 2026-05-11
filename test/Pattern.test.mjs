@@ -79,4 +79,13 @@ describe('Pattern', () => {
     `));
     expect(pattern.neighborsAliveCount(1, 1)).toBe(0);
   });
+
+  test('can count neighbors alive for glider pattern', () => {
+    const pattern = new Pattern(patternFromString(`
+      bob
+      bbo
+      ooo
+    `));
+    expect(pattern.neighborsAliveCount(1, 1)).toBe(5);
+  });
 });

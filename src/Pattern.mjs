@@ -1,5 +1,10 @@
 import { duplicateOf } from './utils.mjs';
 
+const NEIGHBOR_COORDS = [
+  { dx: -1, dy: -1 }, { dx: -1, dy: 0 }, { dx: -1, dy: 1 }, { dx: 0, dy: -1 },
+  { dx: 0, dy: 1 }, { dx: 1, dy: -1 }, { dx: 1, dy: 0 }, { dx: 1, dy: 1 },
+];
+
 class Pattern {
   #arr;
 
@@ -12,7 +17,8 @@ class Pattern {
   }
 
   neighborsAliveCount(x, y) {
-    return 0;
+    const neighbors = NEIGHBOR_COORDS.map(({ dx, dy }) => this.#arr[y + dy][x + dx]);
+    return neighbors.filter(neighbor => neighbor === 'o').length;
   }
 
   nextGeneration() {
