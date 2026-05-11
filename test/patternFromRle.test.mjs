@@ -121,4 +121,18 @@ describe('patternFromRle()', () => {
       oo
     `));
   });
+
+  test('can read patterns that are on multiple lines in the RLE format', () => {
+    const rle = rleFromString(`
+      x = 64, y = 3, rule = B3/S23
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo$bobob
+      obobobobobobobobobobobobobobobobobobobobobobobobobobobobobo$bobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobo!
+    `);
+    expect(patternFromRle(rle)).toEqual(patternFromString(`
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+    `));
+  });
 });

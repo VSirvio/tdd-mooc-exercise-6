@@ -4,7 +4,7 @@ export const getMetadata = rle => {
 };
 
 export const getCellData = rle => {
-  const rleCodedRows = rle.split("\n").slice(1).join().slice(0, -1).split('$');
+  const rleCodedRows = rle.split("\n").slice(1).join('').slice(0, -1).split('$');
   const cellData = rleCodedRows.map(row => {
     let remainingRow = row;
     let result = '';
