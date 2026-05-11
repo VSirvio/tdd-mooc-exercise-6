@@ -8,3 +8,7 @@ export const withMargin = (arr, width) => {
     ...Array(width).fill(null).map(() => 'b'.repeat(arr[0].length + 2 * width).split('')),
   ];
 };
+
+export const withoutMargin = (arr, width) => {
+  return arr.slice(1, -1).map(row => row.slice(1, -1));
+};
