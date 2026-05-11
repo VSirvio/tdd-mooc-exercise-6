@@ -88,4 +88,21 @@ describe('Pattern', () => {
     `));
     expect(pattern.neighborsAliveCount(1, 1)).toBe(5);
   });
+
+  test('can simulate the next generation for 2x2 block pattern', () => {
+    const initialPattern = new Pattern(patternFromString(`
+      bbbb
+      boob
+      boob
+      bbbb
+    `));
+    const expectedResult = new Pattern(patternFromString(`
+      bbbb
+      boob
+      boob
+      bbbb
+    `));
+    expect(initialPattern.nextGeneration().as2DArray())
+      .toEqual(expectedResult.as2DArray());
+  });
 });
