@@ -4,6 +4,10 @@ import { patternFromRle } from './patternFromRle.mjs';
 import { rleFromPattern } from './rleFromPattern.mjs';
 
 const runApplication = async args => {
+  if (args.length !== 2) {
+    throw new Error('The command takes exactly two arguments');
+  }
+
   const inputRle = await readFile(args[0], { encoding: 'utf8' });
   const generationCount = parseInt(args[1]);
   let pattern = new Pattern(patternFromRle(inputRle));

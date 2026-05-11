@@ -12,4 +12,14 @@ describe('runApplication()', () => {
     `);
     expect(output).toBe(expectedOutput);
   });
+
+  test('throws an error if there is a wrong number of arguments', async () => {
+    let error1 = null;
+    try {
+      await runApplication(['./test/testdata/gosperglidergun.rle']);
+    } catch (e) {
+      error1 = e;
+    }
+    expect(error1).toEqual(new Error('The command takes exactly two arguments'));
+  });
 });
