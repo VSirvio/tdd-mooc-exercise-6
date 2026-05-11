@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import {
   patternFromString,
   rleFromString,
-} from '../src/rle.mjs';
+} from './utils.mjs';
 import {
   getCellData,
   getMetadata,

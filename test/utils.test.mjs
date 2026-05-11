@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import {
   patternFromString,
   rleFromString,
-} from '../src/rle.mjs';
+} from './utils.mjs';
 
 describe('rleFromString()', () => {
   test('can read 1x1 all dead pattern from string', () => {
