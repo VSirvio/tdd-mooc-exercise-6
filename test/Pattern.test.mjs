@@ -118,4 +118,17 @@ describe('Pattern', () => {
     expect(initialPattern.nextGeneration().as2DArray())
       .toEqual(expectedResult.as2DArray());
   });
+
+  test('can simulate the next generation for L pattern', () => {
+    const initialPattern = new Pattern(patternFromString(`
+      ob
+      oo
+    `));
+    const expectedResult = new Pattern(patternFromString(`
+      oo
+      oo
+    `));
+    expect(initialPattern.nextGeneration().as2DArray())
+      .toEqual(expectedResult.as2DArray());
+  });
 });
