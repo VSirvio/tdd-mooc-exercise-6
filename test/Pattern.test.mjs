@@ -77,7 +77,7 @@ describe('Pattern', () => {
       bbb
       bbb
     `));
-    expect(pattern.neighborsAliveCount(2, 2)).toBe(0);
+    expect(pattern.neighborsAliveCount(3, 3)).toBe(0);
   });
 
   test('can count neighbors alive for glider pattern', () => {
@@ -86,7 +86,7 @@ describe('Pattern', () => {
       bbo
       ooo
     `));
-    expect(pattern.neighborsAliveCount(2, 2)).toBe(5);
+    expect(pattern.neighborsAliveCount(3, 3)).toBe(5);
   });
 
   test('can simulate the next generation for 2x2 block pattern', () => {
@@ -142,6 +142,21 @@ describe('Pattern', () => {
       obo
     `));
     expect(initialPattern.nextGeneration().as2DArray())
+      .toEqual(expectedResult.as2DArray());
+  });
+
+  test('can simulate the 2nd generation from 3x3 all alive pattern', () => {
+    const initialPattern = new Pattern(patternFromString(`
+      ooo
+      ooo
+      ooo
+    `));
+    const expectedResult = new Pattern(patternFromString(`
+      ooo
+      obo
+      ooo
+    `));
+    expect(initialPattern.nextGeneration().nextGeneration().as2DArray())
       .toEqual(expectedResult.as2DArray());
   });
 });

@@ -7,13 +7,15 @@ const NEIGHBOR_COORDS = [
 
 class Pattern {
   #arr;
+  #marginWidth;
 
-  constructor(arr) {
-    this.#arr = withMargin(arr, 1);
+  constructor(arr, marginWidth) {
+    this.#marginWidth = (marginWidth || 0) + 2;
+    this.#arr = withMargin(arr, 2);
   }
 
   as2DArray() {
-    return withoutMargin(this.#arr, 1);
+    return withoutMargin(this.#arr, this.#marginWidth);
   }
 
   neighborsAliveCount(x, y) {
@@ -42,7 +44,7 @@ class Pattern {
       }
     }
 
-    return new Pattern(withoutMargin(result, 1));
+    return new Pattern(result, this.#marginWidth);
   }
 }
 
