@@ -31,4 +31,15 @@ describe('Pattern', () => {
     returnedArray[0][0] = 'o';
     expect(pattern.as2DArray()).toEqual([['b']]);
   });
+
+  test('can simulate the next generation for 1x1 all dead pattern', () => {
+    const initialPattern = new Pattern(patternFromString(`
+      b
+    `));
+    const expectedResult = new Pattern(patternFromString(`
+      b
+    `));
+    expect(initialPattern.nextGeneration().as2DArray())
+      .toEqual(expectedResult.as2DArray());
+  });
 });
