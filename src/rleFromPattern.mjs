@@ -1,3 +1,5 @@
+import { breakLongLines } from "./utils.mjs";
+
 export const encodeRepetition = str => {
   let remainingStr = str;
   let result = '';
@@ -23,5 +25,5 @@ export const rleFromPattern = pattern => {
   const rows = pattern.map(row => row.join('').replace(/b+$/, ''));
   const rleCodedCellData = encodeRepetition(`${rows.join('$').replace(/\$+$/, '')}!`);
 
-  return firstLine + rleCodedCellData;
+  return firstLine + breakLongLines(rleCodedCellData, 70);
 };

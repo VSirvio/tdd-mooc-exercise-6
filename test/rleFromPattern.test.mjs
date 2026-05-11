@@ -90,4 +90,18 @@ describe('rleFromPattern()', () => {
       bo$2bo$3o!
     `));
   });
+
+  test('breaks lines longer than 70 characters', () => {
+    const pattern = patternFromString(`
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+    `);
+    expect(rleFromPattern(pattern)).toBe(rleFromString(`
+      x = 64, y = 3, rule = B3/S23
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo$bobob
+      obobobobobobobobobobobobobobobobobobobobobobobobobobobobobo$bobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobo!
+    `));
+  });
 });
