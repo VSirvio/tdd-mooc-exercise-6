@@ -10,5 +10,5 @@ export const withMargin = (arr, width) => {
 };
 
 export const withoutMargin = (arr, width) => {
-  return arr.slice(1, -1).map(row => row.slice(1, -1));
+  return arr.slice(width, -width).map(row => row.slice(width, -width));
 };

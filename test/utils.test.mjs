@@ -96,4 +96,17 @@ describe('withoutMargin()', () => {
       o
     `));
   });
+
+  test('can remove 2 units wide margin from 1x1 all alive pattern', () => {
+    const pattern = patternFromString(`
+      bbbbb
+      bbbbb
+      bbobb
+      bbbbb
+      bbbbb
+    `);
+    expect(withoutMargin(pattern, 2)).toEqual(patternFromString(`
+      o
+    `));
+  });
 });
