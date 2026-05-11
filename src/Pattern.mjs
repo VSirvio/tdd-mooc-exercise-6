@@ -11,6 +11,10 @@ class Pattern {
     return duplicateOf(this.#arr);
   }
 
+  neighborsAliveCount(x, y) {
+    return 0;
+  }
+
   nextGeneration() {
     const result = Array(this.#arr.length).fill(null).map(() =>
       Array.from('b'.repeat(this.#arr[0].length))

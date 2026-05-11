@@ -70,4 +70,13 @@ describe('Pattern', () => {
     expect(initialPattern.nextGeneration().as2DArray())
       .toEqual(expectedResult.as2DArray());
   });
+
+  test('can count neighbors alive for 3x3 all dead pattern', () => {
+    const pattern = new Pattern(patternFromString(`
+      bbb
+      bbb
+      bbb
+    `));
+    expect(pattern.neighborsAliveCount(1, 1)).toBe(0);
+  });
 });
