@@ -57,4 +57,17 @@ describe('withMargin()', () => {
       bbbb
     `));
   });
+
+  test('can add margin to 2x2 block pattern', () => {
+    const pattern = patternFromString(`
+      oo
+      oo
+    `);
+    expect(withMargin(pattern)).toEqual(patternFromString(`
+      bbbb
+      boob
+      boob
+      bbbb
+    `));
+  });
 });
