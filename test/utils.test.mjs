@@ -35,4 +35,15 @@ describe('withMargin()', () => {
       bbb
     `));
   });
+
+  test('can add margin to 1x1 all dead pattern', () => {
+    const pattern = patternFromString(`
+      b
+    `);
+    expect(withMargin(pattern)).toEqual(patternFromString(`
+      bbb
+      bbb
+      bbb
+    `));
+  });
 });
