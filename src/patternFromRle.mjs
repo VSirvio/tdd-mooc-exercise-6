@@ -3,22 +3,24 @@ export const getMetadata = rle => {
   return { x: parseInt(metadata[1]), y: parseInt(metadata[2]) };
 };
 
+export const decodeRepetition = str => {
+  let remainingStr = str;
+  let result = '';
+  while (remainingStr) {
+    const match = remainingStr.match(/^(\d*)(b|o)/);
+    let count = 1;
+    if (match[1]) {
+      count = parseInt(match[1]);
+    }
+    result += match[2].repeat(count);
+    remainingStr = remainingStr.slice(match[0].length);
+  }
+  return result;
+};
+
 export const getCellData = rle => {
   const rleCodedRows = rle.split(/\n|\r|\r\n/).slice(1).join('').slice(0, -1).split('$');
-  const cellData = rleCodedRows.map(row => {
-    let remainingRow = row;
-    let result = '';
-    while (remainingRow) {
-      const match = remainingRow.match(/^(\d*)(b|o)/);
-      let count = 1;
-      if (match[1]) {
-        count = parseInt(match[1]);
-      }
-      result += match[2].repeat(count);
-      remainingRow = remainingRow.slice(match[0].length);
-    }
-    return result;
-  });
+  const cellData = rleCodedRows.map(row => decodeRepetition(row));
   return cellData;
 };
 
