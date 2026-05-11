@@ -22,4 +22,14 @@ describe('runApplication()', () => {
     }
     expect(error1).toEqual(new Error('The command takes exactly two arguments'));
   });
+
+  test('throws an error if the second argument cannot be parsed as a positive integer', async () => {
+    let error1 = null;
+    try {
+      await runApplication(['./test/testdata/gosperglidergun.rle', 't']);
+    } catch (e) {
+      error1 = e;
+    }
+    expect(error1).toEqual(new Error('The second argument should be a positive integer'));
+  });
 });

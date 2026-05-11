@@ -8,6 +8,10 @@ const runApplication = async args => {
     throw new Error('The command takes exactly two arguments');
   }
 
+  if (!/^[1-9]\d*$/.test(args[1])) {
+    throw new Error('The second argument should be a positive integer');
+  }
+
   const inputRle = await readFile(args[0], { encoding: 'utf8' });
   const generationCount = parseInt(args[1]);
   let pattern = new Pattern(patternFromRle(inputRle));
