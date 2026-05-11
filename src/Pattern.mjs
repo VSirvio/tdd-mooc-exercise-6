@@ -1,4 +1,4 @@
-import { duplicateOf } from './utils.mjs';
+import { withMargin, withoutMargin } from './utils.mjs';
 
 const NEIGHBOR_COORDS = [
   { dx: -1, dy: -1 }, { dx: -1, dy: 0 }, { dx: -1, dy: 1 }, { dx: 0, dy: -1 },
@@ -9,11 +9,11 @@ class Pattern {
   #arr;
 
   constructor(arr) {
-    this.#arr = duplicateOf(arr);
+    this.#arr = withMargin(arr, 1);
   }
 
   as2DArray() {
-    return duplicateOf(this.#arr);
+    return withoutMargin(this.#arr, 1);
   }
 
   neighborsAliveCount(x, y) {
@@ -36,7 +36,7 @@ class Pattern {
       }
     }
 
-    return new Pattern(result);
+    return new Pattern(withoutMargin(result, 1));
   }
 }
 
