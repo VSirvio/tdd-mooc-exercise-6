@@ -19,7 +19,8 @@ export const decodeRepetition = str => {
 };
 
 export const getCellData = rle => {
-  const rleCodedRows = rle.split(/\n|\r|\r\n/).slice(1).join('').slice(0, -1).split('$');
+  const firstLineRemoved = rle.split(/\n|\r|\r\n/).slice(1).join('');
+  const rleCodedRows = firstLineRemoved.slice(0, -1).split('$');
   const cellData = rleCodedRows.map(row => decodeRepetition(row));
   return cellData;
 };
