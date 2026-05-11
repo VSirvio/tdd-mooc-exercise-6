@@ -70,4 +70,17 @@ describe('withMargin()', () => {
       bbbb
     `));
   });
+
+  test('can add 2 units wide margin to 1x1 all alive pattern', () => {
+    const pattern = patternFromString(`
+      o
+    `);
+    expect(withMargin(pattern, 2)).toEqual(patternFromString(`
+      bbbbb
+      bbbbb
+      bbobb
+      bbbbb
+      bbbbb
+    `));
+  });
 });
