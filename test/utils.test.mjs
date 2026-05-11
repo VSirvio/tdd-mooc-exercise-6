@@ -46,4 +46,15 @@ describe('withMargin()', () => {
       bbb
     `));
   });
+
+  test('can add margin to 2x1 all alive pattern', () => {
+    const pattern = patternFromString(`
+      oo
+    `);
+    expect(withMargin(pattern)).toEqual(patternFromString(`
+      bbbb
+      boob
+      bbbb
+    `));
+  });
 });
