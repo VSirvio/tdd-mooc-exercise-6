@@ -1,12 +1,14 @@
+import { duplicateOf } from './utils.mjs';
+
 class Pattern {
   #arr;
 
   constructor(arr) {
-    this.#arr = arr.map(row => Array.from(row));
+    this.#arr = duplicateOf(arr);
   }
 
   as2DArray() {
-    return this.#arr.map(row => Array.from(row));
+    return duplicateOf(this.#arr);
   }
 }
 
