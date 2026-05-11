@@ -42,4 +42,17 @@ describe('Pattern', () => {
     expect(initialPattern.nextGeneration().as2DArray())
       .toEqual(expectedResult.as2DArray());
   });
+
+  test('can simulate the next generation for 2x2 all dead pattern', () => {
+    const initialPattern = new Pattern(patternFromString(`
+      bb
+      bb
+    `));
+    const expectedResult = new Pattern(patternFromString(`
+      bb
+      bb
+    `));
+    expect(initialPattern.nextGeneration().as2DArray())
+      .toEqual(expectedResult.as2DArray());
+  });
 });

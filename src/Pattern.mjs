@@ -12,7 +12,7 @@ class Pattern {
   }
 
   nextGeneration() {
-    return new Pattern([['b']]);
+    return new Pattern(this.#arr);
   }
 }
 
