@@ -135,4 +135,18 @@ describe('patternFromRle()', () => {
       bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
     `));
   });
+
+  test('can read patterns that have Windows or Mac-style line breaks in the RLE format', () => {
+    const rle = rleFromString(
+      "x = 64, y = 3, rule = B3/S23\n" +
+      "bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo$bobob\r" +
+      "obobobobobobobobobobobobobobobobobobobobobobobobobobobobobo$bobobobobo\r\n" +
+      "bobobobobobobobobobobobobobobobobobobobobobobobobobobo!"
+    );
+    expect(patternFromRle(rle)).toEqual(patternFromString(`
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+      bobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobobo
+    `));
+  });
 });
