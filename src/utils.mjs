@@ -12,3 +12,7 @@ export const withMargin = (arr, width) => {
 export const withoutMargin = (arr, width) => {
   return arr.slice(width, -width).map(row => row.slice(width, -width));
 };
+
+export const breakLongLines = (str, lineLength) => {
+  return str.slice(0, lineLength) + "\n" + str.slice(lineLength);
+};

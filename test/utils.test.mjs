@@ -3,7 +3,7 @@ import {
   patternFromString,
   rleFromString,
 } from './utils.mjs';
-import { withMargin, withoutMargin } from '../src/utils.mjs';
+import { breakLongLines, withMargin, withoutMargin } from '../src/utils.mjs';
 
 describe('rleFromString()', () => {
   test('can read 1x1 all dead pattern from string', () => {
@@ -108,5 +108,11 @@ describe('withoutMargin()', () => {
     expect(withoutMargin(pattern, 2)).toEqual(patternFromString(`
       o
     `));
+  });
+});
+
+describe('breakLongLines()', () => {
+  test('can break a string that is one character longer than the limit', () => {
+    expect(breakLongLines('a'.repeat(71), 70)).toBe('a'.repeat(70) + "\na");
   });
 });
