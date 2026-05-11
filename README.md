@@ -26,6 +26,10 @@ Run tests continuously
 
     npm run autotest
 
+Run E2E tests
+
+    node end-to-end-test.mjs
+
 Code reformat
 
     npm run format
