@@ -3,6 +3,7 @@ import {
   patternFromString,
   rleFromString,
 } from './utils.mjs';
+import { withMargin } from '../src/utils.mjs';
 
 describe('rleFromString()', () => {
   test('can read 1x1 all dead pattern from string', () => {
@@ -20,5 +21,18 @@ describe('patternFromString()', () => {
       b
     `;
     expect(patternFromString(patternString)).toEqual([['b']]);
+  });
+});
+
+describe('withMargin()', () => {
+  test('can add margin to 1x1 all alive pattern', () => {
+    const pattern = patternFromString(`
+      o
+    `);
+    expect(withMargin(pattern)).toEqual(patternFromString(`
+      bbb
+      bob
+      bbb
+    `));
   });
 });
