@@ -106,4 +106,19 @@ describe('patternFromRle()', () => {
       ooo
     `));
   });
+
+  test('ignores any lines that start with #', () => {
+    const rle = rleFromString(`
+      #N Block
+      #C An extremely common 4-cell still life.
+      #C www.conwaylife.com/wiki/index.php?title=Block
+      x = 2, y = 2, rule = B3/S23
+      #C Extra comment
+      2o$2o!
+    `);
+    expect(patternFromRle(rle)).toEqual(patternFromString(`
+      oo
+      oo
+    `));
+  });
 });

@@ -22,7 +22,8 @@ export const getCellData = rle => {
   return cellData;
 };
 
-export const patternFromRle = rle => {
+export const patternFromRle = rawRle => {
+  const rle = rawRle.split("\n").filter(line => line[0] !== '#').join("\n");
   const metadata = getMetadata(rle);
   const cellData = getCellData(rle);
   const result = Array(metadata.y).fill(null).map(() =>
