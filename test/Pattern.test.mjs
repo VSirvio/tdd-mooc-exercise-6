@@ -55,4 +55,19 @@ describe('Pattern', () => {
     expect(initialPattern.nextGeneration().as2DArray())
       .toEqual(expectedResult.as2DArray());
   });
+
+  test('can simulate the next generation for 1x1 block pattern', () => {
+    const initialPattern = new Pattern(patternFromString(`
+      bbb
+      bob
+      bbb
+    `));
+    const expectedResult = new Pattern(patternFromString(`
+      bbb
+      bbb
+      bbb
+    `));
+    expect(initialPattern.nextGeneration().as2DArray())
+      .toEqual(expectedResult.as2DArray());
+  });
 });

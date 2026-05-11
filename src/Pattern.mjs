@@ -12,7 +12,10 @@ class Pattern {
   }
 
   nextGeneration() {
-    return new Pattern(this.#arr);
+    const result = Array(this.#arr.length).fill(null).map(() =>
+      Array.from('b'.repeat(this.#arr[0].length))
+    );
+    return new Pattern(result);
   }
 }
 
