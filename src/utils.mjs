@@ -14,5 +14,11 @@ export const withoutMargin = (arr, width) => {
 };
 
 export const breakLongLines = (str, lineLength) => {
-  return str.slice(0, lineLength) + "\n" + str.slice(lineLength);
+  let remainingStr = str;
+  let resultArray = [];
+  while (remainingStr) {
+    resultArray.push(remainingStr.slice(0, lineLength));
+    remainingStr = remainingStr.slice(lineLength);
+  }
+  return resultArray.join("\n");
 };

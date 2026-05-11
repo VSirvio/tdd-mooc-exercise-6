@@ -115,4 +115,9 @@ describe('breakLongLines()', () => {
   test('can break a string that is one character longer than the limit', () => {
     expect(breakLongLines('a'.repeat(71), 70)).toBe('a'.repeat(70) + "\na");
   });
+
+  test('can break a string that is three times as long as the limit', () => {
+    expect(breakLongLines('6'.repeat(33), 11))
+      .toBe(('6'.repeat(11) + "\n").repeat(3).slice(0, -1));
+  });
 });
